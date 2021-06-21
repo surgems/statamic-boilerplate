@@ -1,0 +1,92 @@
+title: 'Blog Posts'
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: content
+        field:
+          always_show_set_button: false
+          buttons:
+            - h2
+            - h3
+            - bold
+            - italic
+            - unorderedlist
+            - orderedlist
+            - removeformat
+            - quote
+            - anchor
+            - image
+            - table
+          container: assets
+          save_html: false
+          toolbar_mode: fixed
+          link_noopener: false
+          link_noreferrer: false
+          target_blank: false
+          reading_time: false
+          fullscreen: true
+          allow_source: true
+          enable_input_rules: true
+          enable_paste_rules: true
+          display: Content
+          type: bard
+          icon: bard
+          listable: hidden
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+      -
+        handle: post_date
+        field:
+          mode: single
+          time_enabled: false
+          time_required: false
+          earliest_date: '1900-01-01'
+          full_width: false
+          inline: false
+          columns: 1
+          rows: 1
+          display: Date
+          type: date
+          icon: date
+          listable: hidden
+      -
+        handle: author
+        field:
+          input_type: text
+          antlers: false
+          display: Author
+          type: text
+          icon: text
+          listable: hidden
+      -
+        handle: blog_post_categories
+        field:
+          type: terms
+          taxonomies:
+            - blog_post_categories
+          display: Category
+          mode: select
+          listable: hidden
+  seo:
+    display: SEO
+    fields:
+      -
+        import: seo

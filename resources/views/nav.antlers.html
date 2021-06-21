@@ -1,0 +1,23 @@
+<header role="header">
+
+    <!-- LOGO -->
+    <a href="/" class="logo">
+        {{ header:logo }}
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <ul>
+            {{ nav handle="navigation" }}
+                <li>
+                    <a href="{{ url }}" class="{{ if is_parent }}has-children{{ /if }}">{{ title }}</a>
+
+                    {{ if children }}
+                        <ul class="sub-menu">{{ *recursive children* }}</ul>
+                    {{ /if }}
+                </li>
+            {{ /nav }}
+        </ul>
+    </nav>
+
+</header>

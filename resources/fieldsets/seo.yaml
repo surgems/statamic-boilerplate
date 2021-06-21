@@ -1,0 +1,40 @@
+title: SEO
+fields:
+  -
+    handle: featured_image
+    field:
+      mode: grid
+      container: assets
+      restrict: false
+      allow_uploads: true
+      max_files: 1
+      display: 'Featured Image'
+      type: assets
+      icon: assets
+      listable: hidden
+  -
+    handle: meta_title
+    field:
+      input_type: text
+      antlers: false
+      display: 'Meta Title'
+      type: text
+      icon: text
+      listable: hidden
+  -
+    handle: meta_description
+    field:
+      character_limit: '160'
+      antlers: false
+      display: 'Meta Description'
+      type: textarea
+      icon: textarea
+      listable: hidden
+  -
+    handle: schema
+    field:
+      antlers: false
+      display: Schema
+      type: textarea
+      icon: textarea
+      listable: hidden

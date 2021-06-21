@@ -1,0 +1,12 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: company_info
+        field:
+          antlers: false
+          display: 'Company Info'
+          type: textarea
+          icon: textarea
+          listable: hidden

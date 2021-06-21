@@ -1,0 +1,32 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: facebook
+        field:
+          display: Facebook
+          type: link
+          icon: link
+          listable: hidden
+      -
+        handle: linkedin
+        field:
+          display: LinkedIn
+          type: link
+          icon: link
+          listable: hidden
+      -
+        handle: twitter
+        field:
+          display: Twitter
+          type: link
+          icon: link
+          listable: hidden
+      -
+        handle: instagram
+        field:
+          display: Instagram
+          type: link
+          icon: link
+          listable: hidden

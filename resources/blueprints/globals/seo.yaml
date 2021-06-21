@@ -1,0 +1,13 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: schema_markup
+        field:
+          antlers: false
+          display: 'Schema Markup'
+          type: textarea
+          icon: textarea
+          listable: hidden
+          instructions: 'This field is for any sitewide schema. You are able to add schema per page within the page itself.'
