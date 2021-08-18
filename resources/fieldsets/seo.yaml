@@ -31,6 +31,13 @@ fields:
       icon: textarea
       listable: hidden
   -
+    handle: noindex_page
+    field:
+      display: 'Hide from Search Engines?'
+      type: toggle
+      icon: toggle
+      listable: hidden
+  -
     handle: schema
     field:
       antlers: false
