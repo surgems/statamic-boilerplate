@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ceb3b33bf3ed273bb2d1a8806fe0d70c",
+    "content-hash": "886caa6e37cb602077bb1cc124d2d21e",
     "packages": [
         {
             "name": "aryehraber/statamic-captcha",
@@ -3577,6 +3577,53 @@
                 "source": "https://github.com/rebing/graphql-laravel/tree/6.5.0"
             },
             "time": "2021-04-03T19:55:47+00:00"
+        },
+        {
+            "name": "rias/statamic-redirect",
+            "version": "1.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/riasvdv/statamic-redirect.git",
+                "reference": "3c14783e2131505ef06395233e6ba085a97922ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/riasvdv/statamic-redirect/zipball/3c14783e2131505ef06395233e6ba085a97922ba",
+                "reference": "3c14783e2131505ef06395233e6ba085a97922ba",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.3|^7.4|^8.0",
+                "statamic/cms": "^3.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0",
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "statamic": {
+                    "name": "Statamic Redirect",
+                    "description": "Statamic Redirect addon"
+                },
+                "laravel": {
+                    "providers": [
+                        "Rias\\StatamicRedirect\\RedirectServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rias\\StatamicRedirect\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/riasvdv/statamic-redirect/issues",
+                "source": "https://github.com/riasvdv/statamic-redirect/tree/1.4.7"
+            },
+            "time": "2021-08-11T07:07:17+00:00"
         },
         {
             "name": "seld/jsonlint",
