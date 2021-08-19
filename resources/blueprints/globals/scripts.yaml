@@ -1,0 +1,28 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: header_scripts
+        field:
+          antlers: false
+          display: 'Header Scripts'
+          type: textarea
+          icon: textarea
+          listable: hidden
+      -
+        handle: body_scripts
+        field:
+          antlers: false
+          display: 'Body Scripts'
+          type: textarea
+          icon: textarea
+          listable: hidden
+      -
+        handle: footer_scripts
+        field:
+          antlers: false
+          display: 'Footer Scripts'
+          type: textarea
+          icon: textarea
+          listable: hidden

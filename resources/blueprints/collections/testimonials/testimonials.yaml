@@ -1,4 +1,4 @@
-title: 'Posts'
+title: Testimonials
 sections:
   main:
     display: Main
@@ -15,6 +15,7 @@ sections:
         field:
           always_show_set_button: false
           buttons:
+            - h1
             - h2
             - h3
             - bold
@@ -53,7 +54,7 @@ sections:
           validate:
             - required
       -
-        handle: post_date
+        handle: date
         field:
           mode: single
           time_enabled: false
@@ -77,14 +78,15 @@ sections:
           icon: text
           listable: hidden
       -
-        handle: blog_post_categories
+        handle: testimonial_categories
         field:
           type: terms
           taxonomies:
-            - blog_post_categories
-          display: Category
+            - testimonial_categories
+          display: 'Testimonial Categories'
           mode: select
           listable: hidden
+          create: true
   seo:
     display: SEO
     fields:

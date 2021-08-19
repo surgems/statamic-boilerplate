@@ -3,6 +3,46 @@ sections:
     display: Main
     fields:
       -
+        handle: logo
+        field:
+          mode: grid
+          container: assets
+          restrict: false
+          allow_uploads: true
+          max_files: 1
+          display: Logo
+          type: assets
+          icon: assets
+          listable: hidden
+      -
+        handle: footer_links
+        field:
+          collapse: false
+          sets:
+            footer_links:
+              display: 'Footer Links'
+              fields:
+                -
+                  handle: label
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Label
+                    type: text
+                    icon: text
+                    listable: hidden
+                -
+                  handle: link
+                  field:
+                    display: Link
+                    type: link
+                    icon: link
+                    listable: hidden
+          display: 'Footer Links'
+          type: replicator
+          icon: replicator
+          listable: hidden
+      -
         handle: company_info
         field:
           antlers: false

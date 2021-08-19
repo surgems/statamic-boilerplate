@@ -1,4 +1,4 @@
-title: 'Posts'
+title: FAQs
 sections:
   main:
     display: Main
@@ -15,6 +15,7 @@ sections:
         field:
           always_show_set_button: false
           buttons:
+            - h1
             - h2
             - h3
             - bold
@@ -53,38 +54,13 @@ sections:
           validate:
             - required
       -
-        handle: post_date
-        field:
-          mode: single
-          time_enabled: false
-          time_required: false
-          earliest_date: '1900-01-01'
-          full_width: false
-          inline: false
-          columns: 1
-          rows: 1
-          display: Date
-          type: date
-          icon: date
-          listable: hidden
-      -
-        handle: author
-        field:
-          input_type: text
-          antlers: false
-          display: Author
-          type: text
-          icon: text
-          listable: hidden
-      -
-        handle: blog_post_categories
+        handle: faq_categories
         field:
           type: terms
           taxonomies:
-            - blog_post_categories
-          display: Category
+            - faq_categories
+          display: 'FAQ Categories'
           mode: select
-          listable: hidden
   seo:
     display: SEO
     fields:
