@@ -39,13 +39,15 @@
 
         {{ partial:nav }}
 
-        <ul class="breadcrumbs">
-            {{ nav:breadcrumbs }}
-            <li{{ if is_current }} class="current"{{ /if }}>
-                <a href="{{ url }}">{{ title }}</a>
-            </li>
-            {{ /nav:breadcrumbs }}
-        </ul>
+        {{ if enable_breadcrumbs }}
+            <ul class="breadcrumbs">
+                {{ nav:breadcrumbs }}
+                <li{{ if is_current }} class="current"{{ /if }}>
+                    <a href="{{ url }}">{{ title }}</a>
+                </li>
+                {{ /nav:breadcrumbs }}
+            </ul>
+        {{ /if }}
 
         {{ template_content }}
 

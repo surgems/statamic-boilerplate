@@ -1,0 +1,12 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: enable_breadcrumbs
+        field:
+          default: false
+          display: 'Enable Breadcrumbs?'
+          type: toggle
+          icon: toggle
+          listable: hidden
