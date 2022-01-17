@@ -1,3 +1,7 @@
+import $ from 'jquery';
+window.jQuery = $; 
+window.$ = $;
+
 import 'owl.carousel';
 
 $(document).ready(function () {

@@ -1,23 +1,89 @@
 <header role="header">
-
-    <!-- LOGO -->
-    <a href="/" class="logo">
-        {{ header:logo }}
-    </a>
-
-    <!-- NAVIGATION -->
-    <nav>
-        <ul>
-            {{ nav handle="navigation" }}
-                <li>
-                    <a href="{{ url }}" class="{{ if is_parent }}has-children{{ /if }}">{{ title }}</a>
-
-                    {{ if children }}
-                        <ul class="sub-menu">{{ *recursive children* }}</ul>
-                    {{ /if }}
-                </li>
+    <nav id="nav">
+        <div class="inner-nav">
+            <a href="/" class="logo">
+                <picture>
+                    <source srcset="{{ glide:details:logo width='50px' format='webp' quality='100' }}" type="image/webp">
+                
+                    <img id="nav-logo" src="{{ glide:details:logo width='100px' quality='100' }}" alt="{{details:logo:alt}}">
+                </picture>
+            </a>
+    
+            <div class="desktop-nav">
+                <div id="top-nav" class="top">
+                    <a>TEXT</a>
+                </div>
+    
+                <div class="bottom">
+                    {{ nav handle="main_navigation" }}
+                        <li id="{{title}}-link">
+                            <a href="{{ url }}" class="{{ if is_parent }}has-children{{ /if }}">{{ title }}</a>
+        
+                            {{ if children }}
+                                <ul id="{{title}}-dropdown" class="dropdown {{title}}">{{ *recursive children* }}</ul>
+                            {{ /if }}
+                        </li>
+                    {{ /nav }}
+                </div>
+            </div>
+    
+            <div class="mob-nav">
+                <a class="phone" href="tel:{{details:phone_number}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="39.3" height="39.3" viewBox="0 0 39.3 39.3">
+                        <g id="Group_155" data-name="Group 155" transform="translate(-237 -104.23)">
+                            <g id="ic_local_phone_48px" transform="translate(237 104.23)">
+                            <path id="Path_154" data-name="Path 154" d="M13.915,23.019A32.881,32.881,0,0,0,28.3,37.4l4.8-4.814a2.19,2.19,0,0,1,2.216-.535,24.854,24.854,0,0,0,7.794,1.244A2.176,2.176,0,0,1,45.3,35.475v7.642A2.176,2.176,0,0,1,43.116,45.3,37.113,37.113,0,0,1,6,8.183,2.183,2.183,0,0,1,8.183,6h7.642a2.176,2.176,0,0,1,2.183,2.183,24.854,24.854,0,0,0,1.244,7.794,2.19,2.19,0,0,1-.535,2.216Z" transform="translate(-6 -6)" fill="#e50331"/>
+                            </g>
+                        </g>
+                    </svg>                                      
+                </a>
+    
+                <div class="burger">
+                    <div id="nav-icon3">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div id="mob-menu">
+            {{ nav handle="main_navigation" }}
+                <div class="accordion-container">
+                    <li class="accordion" id="{{title}}-link">
+                        <a href="{{ url }}" class="{{ if is_parent }}has-children{{ /if }}">{{ title }}</a>
+        
+                        {{ if children }}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14.83" height="24" viewBox="0 0 14.83 24">
+                                <g id="ic_keyboard_arrow_right_48px" transform="translate(-17.17 -11.75)">
+                                <path id="Path_12063" data-name="Path 12063" d="M17.17,32.92l9.17-9.17-9.17-9.17L20,11.75l12,12-12,12Z" fill="#111"/>
+                                </g>
+                            </svg>
+                            
+                            <ul id="{{title}}-dropdown" class="panel dropdown {{title}}">{{ *recursive children* }}</ul>
+                        {{ /if }}
+                    </li>
+                </div>
             {{ /nav }}
-        </ul>
+    
+            <div class="contact">
+                <li class="accordion">
+                    <a href="/contact">contact</a>
+                </li>
+            </div>
+    
+            <div class="socials">
+                <ul class="social-networks spin-icon">
+                    <li><a target="_blank" href="{{footer:facebook_link}}" class="icon-facebook"></a></li>
+                    <li><a target="_blank" href="{{footer:twitter_link}}" class="icon-twitter"></a></li>
+                    <li><a target="_blank" href="{{footer:linkedin_link}}" class="icon-linkedin"></a></li>
+                    <li><a target="_blank" href="{{footer:instagram_link}}" class="icon-instagram"></a></li>
+                </ul>
+            </div>
+    
+            <p>{{footer:surge_info}}</p>
+        </div>
     </nav>
-
 </header>

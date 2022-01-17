@@ -1,3 +1,2 @@
-import './maps';
 import './sliders';
-import './others';
+import './globals';

@@ -1,0 +1,241 @@
+@mixin flex($align-items: none, $justify-content: none, $flex-wrap: none, $flex-direction: none) {
+    display: flex;
+    align-items: $align-items;
+    justify-content: $justify-content;
+    flex-wrap: $flex-wrap;
+    flex-direction: $flex-direction;
+}
+@mixin font($font-weight: 400, $font-size: 16px, $color: #000) {
+    font : {
+        family: none;
+        weight: $font-weight;
+        size: $font-size;
+    }
+}
+
+$portrait-tablet: "only screen and (max-width: 768px) and (min-width: 500px) and (max-height: 1024px)";
+$landscape-tablet: "only screen and (max-height: 768px) and (max-width: 1024px) and (min-width: 500px)"; // also landscape mobile
+$laptop: "only screen and (min-width: 1024px) and (max-width: 1600px)";
+$desktop: "only screen and (min-width: 1600px)";
+$mobNavHeight: 86px;
+$tabletNavHeight: 100px;
+$desktopNavHeight: 100px;
+
+* {
+    // border: 1px solid red; // for testing
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    ::selection {
+        background-color: default;
+    }
+
+    body { 
+        padding-top: $mobNavHeight;
+
+        &.no-scroll {
+            overflow-y: hidden;
+        }
+
+        main {
+            min-height: 75vh;
+            z-index: -1;
+        }
+
+        .flex {
+            @include flex(0);
+        }
+
+        .content {
+            a {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            li {
+                list-style-position: inside;
+                margin: 10px 0;
+
+                p {
+                    display: inline;
+                }
+            }
+        }
+
+        /* ACCORDION */
+
+        .accordion-container {
+            width: 100%;
+            
+            .accordion {
+                position: relative;
+                margin-bottom: 15px;
+                background-color: #F2F2F2;
+                cursor: pointer;
+
+                .title {
+                    @include flex(center);
+                    height: 50px;
+                    padding-left: 15px;
+                }
+
+                svg {
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    transition-duration: .15s;
+                    right: 25px;
+                    top: 0;
+                }
+
+                .panel {
+                    padding: 15px 20px;
+                }
+
+                .panel, .hide-panel {
+                    display: none;
+                }
+            }
+        }
+
+        /* FORM */
+
+        form {
+            label {
+                width: 100%;
+
+                input, textarea {
+                    min-height: 50px;
+                    width: 100%;
+                    outline: none;
+                    border: 1px solid #B3B3B3;
+                    margin-top: 3.5px;
+                    padding: 0 10px;
+                }
+
+                textarea {
+                    padding: 5px 10px;
+                    resize: none;
+                }
+            }
+
+            .flex {
+                width: 100%;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        /* OWL CAROUSEL */
+
+        .owl-stage {
+            cursor: grab;
+
+            &:active {
+                cursor: grabbing;
+            }
+        }
+    }
+
+    a {
+        width: fit-content;
+        height: fit-content;
+        text-decoration: none;
+        color: #000;
+    }
+
+    picture {
+        font-size: 0;
+        line-height: 0;
+
+        img {
+            display: block;
+        }
+    }
+}
+
+/* TABLET */
+
+// @media #{$portrait-tablet} {
+//     * {
+//         body {
+//             main {
+//             }
+//         }
+//     }
+// }
+
+@media #{$landscape-tablet}, #{$laptop}, #{$desktop} {
+    * {
+        body {
+            main {
+                /* ACCORDION */
+
+                .accordion-container {
+                    .accordion {
+                        margin-bottom: 15px;
+
+                        .title {
+                            @include flex(center);
+                            height: 60px;
+                            padding-left: 25px;
+                        }
+
+                        svg {
+                            position: absolute;
+                            height: 60px;
+                            right: 35px;
+                            top: 0;
+                            transition-duration: .2s;
+                        }
+
+                        .panel {
+                            padding: 15px 35px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* DESKTOP */
+
+@media #{$laptop}, #{$desktop} {
+    * {
+        body {
+            padding-top: $desktopNavHeight;
+
+            // main {}
+
+            // .content {
+            //     a {
+            //         font-size: 16px;
+            //     }
+
+            //     li {
+            //         margin: 50px 0;
+
+            //         p {
+            //             font-size: 20px;
+            //         }
+            //     }
+            // }
+        }
+    }
+}
+
+/* LANDSCAPE MOBILE */
+
+// @media #{$landscape-mobile} {
+//     * {
+//         body {
+//             main {
+//             }
+//         }
+//     }
+// }
