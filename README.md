@@ -15,7 +15,7 @@ composer update
 npm install
 ```
 ```
-php artisan config:clear
+php artisan config:clear && php artisan cache:clear
 ```
 ```
 composer require statamic/cms --with-dependencies
