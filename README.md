@@ -6,8 +6,9 @@
 git remote rm origin
  ```
 
- 2. Make a repository and link it to that <br>
- 3. Then, run these commands: <br>
+ 2. Add .gitignore and .gitattributes
+ 3. Make a repository and link it to that <br>
+ 4. Then, run these commands: <br>
 ```
 composer update
 ```
@@ -23,6 +24,6 @@ composer require statamic/cms --with-dependencies
 ```
 php artisan key:gen
 ```
-4. Logins are <br>
+5. Logins are <br>
 _developers@_
 _usual password_
