@@ -17,9 +17,9 @@ $portrait-tablet: "only screen and (max-width: 768px) and (min-width: 500px) and
 $landscape-tablet: "only screen and (max-height: 768px) and (max-width: 1024px) and (min-width: 500px)"; // also landscape mobile
 $laptop: "only screen and (min-width: 1024px) and (max-width: 1600px)";
 $desktop: "only screen and (min-width: 1600px)";
-$mobNavHeight: 86px;
-$tabletNavHeight: 100px;
-$desktopNavHeight: 100px;
+$mobNavHeight: 75px;
+$tabletNavHeight: 95px;
+$desktopNavHeight: 115px;
 
 * {
     // border: 1px solid red; // for testing
@@ -160,18 +160,19 @@ $desktopNavHeight: 100px;
 
 /* TABLET */
 
-// @media #{$portrait-tablet} {
-//     * {
-//         body {
-//             main {
-//             }
-//         }
-//     }
-// }
+@media #{$portrait-tablet} {
+    * {
+        body {
+            padding-top: $tabletNavHeight;
+        }
+    }
+}
 
 @media #{$landscape-tablet}, #{$laptop}, #{$desktop} {
     * {
         body {
+            padding-top: $tabletNavHeight;
+
             main {
                 /* ACCORDION */
 
