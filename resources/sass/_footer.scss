@@ -1,3 +1,26 @@
 footer {
     background-color: #fff;
+
+    .bottom {
+        .surge {
+            @include flex(center);
+            margin-top: 27.5px;
+
+            p {
+                margin-right: 20px;
+            }
+
+            a, svg {
+                height: 20px;
+                width: 76px;
+
+                &:hover {
+                    .fill {
+                        fill: #a6ce39;
+                        stroke: #a6ce39;
+                    }
+                }
+            }
+        }
+    }
 }

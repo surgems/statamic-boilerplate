@@ -1,1 +1,15 @@
-<p>404 Page not found.</p>
+<main class="error">
+    {{ 404:page_content}}
+        <h1>{{ title }}</h1>
+
+        <div class="content">
+            {{ content }}
+        </div>
+
+        {{ if button_link }}
+            <a href="{{ button_link }}">
+                <button>{{ button_text }}</button>
+            </a>
+        {{ endif }}
+    {{ /404:page_content}}
+</main>

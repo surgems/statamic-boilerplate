@@ -1,0 +1,9 @@
+title: Contact
+template: thank-you
+layout: layout
+revisions: false
+route: '/contact/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private

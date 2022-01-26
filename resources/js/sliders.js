@@ -1,33 +1,42 @@
-import $ from 'jquery';
-window.jQuery = $; 
-window.$ = $;
-
 import 'owl.carousel';
 
-$(document).ready(function () {
+if ($(".owl-carousel")[0]) {
+    var carousels = $(".owl-carousel");
 
-	// if ($(".top-area-overlay")[0]) {
-	// 	var carousel = $(".top-area-overlay .owl-carousel");
+    // INITIALISE ALL CAROUSELS
+    $(carousels).each(function() {
+        const carouselClass = $(this).attr('class').split(' ');
+        
+        $(this).owlCarousel({
+            autoplay: false,
+			margin: parseInt($(this).attr('data-has-margin')),
+			loop: $(this).attr('class').split(' ').includes('no-loop') ? false : true,
+            dots: $(this).attr('class').split(' ').includes('dots') ? true : false,
+            responsive: {
+                0: {
+                    items: $(this).attr('data-slides-mobile') || 1
+                },
+                500: {
+                    items: $(this).attr('data-slides-portrait-tablet') || 1
+                },
+                769: {
+                    items: $(this).attr('data-slides-landscape-tablet') || 1
+                },
+                1025: {
+                    items: $(this).attr('data-slides-laptop') || 1
+                },
+                1600: {
+                    items: $(this).attr('data-slides-desktop') || 1
+                }
+            }
+        });
+    });
 
-	// 	carousel.owlCarousel({
-	// 		autoplay: true,
-	// 		autoplayTimeout: 6000,
-	// 		autoplayHoverPause: true,
-	// 		animateIn: 'fadeIn', // add this
-	// 		animateOut: 'fadeOut', // and this
-	// 		loop: true,
-	// 		dots: false,
-	// 		nav: false,
-	// 		items: 1
-	// 	});
-
-	// 	$(".jobs-slider .owl-custom-nav>div").on("click", function() {
-	// 		if ($(this).hasClass("prev")) {
-	// 			$(".jobs-slider .owl-carousel button.owl-prev").trigger("click");
-	// 		} else if ($(this).hasClass("next")) {
-	// 			$(".jobs-slider .owl-carousel button.owl-next").trigger("click");
-	// 		}
-	// 	});
-	// }
-	
-});
+    $(".owl-nav-custom").on("click", function() {
+        if ($(this).hasClass("prev")) {
+            $(this).parent().parent().find('.owl-carousel button.owl-prev').trigger("click");
+        } else if ($(this).hasClass("next")) {
+            $(this).parent().parent().find('.owl-carousel button.owl-next').trigger("click");
+        }
+    });
+}

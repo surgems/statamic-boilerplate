@@ -1,0 +1,16 @@
+title: '404'
+data:
+  page_content:
+    -
+      title: 'Oh No! 404'
+      content:
+        -
+          type: paragraph
+          content:
+            -
+              type: text
+              text: 'The page you''re currently looking for cannot be found. Please come back and try again later.'
+      button_link: /
+      button_text: 'Return Home'
+      type: page_content
+      enabled: true

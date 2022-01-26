@@ -3,9 +3,9 @@
         <div class="inner-nav">
             <a href="/" class="logo">
                 <picture>
-                    <source srcset="{{ glide:details:logo width='50px' format='webp' quality='100' }}" type="image/webp">
+                    <source srcset="{{ glide:logos:logo width='50px' format='webp' quality='100' }}" type="image/webp">
                 
-                    <img id="nav-logo" src="{{ glide:details:logo width='100px' quality='100' }}" alt="{{details:logo:alt}}">
+                    <img class="logo" src="{{ glide:logos:logo width='100px' quality='100' }}" alt="{{logos:logo:alt}}">
                 </picture>
             </a>
     
@@ -29,7 +29,7 @@
     
             <div class="mob-nav">
                 <div class="burger">
-                    <div id="nav-icon3">
+                    <div class="burger-icon">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -65,15 +65,13 @@
             </div>
     
             <div class="socials">
-                <ul class="social-networks spin-icon">
-                    <li><a target="_blank" href="{{footer:facebook_link}}" class="icon-facebook"></a></li>
-                    <li><a target="_blank" href="{{footer:twitter_link}}" class="icon-twitter"></a></li>
-                    <li><a target="_blank" href="{{footer:linkedin_link}}" class="icon-linkedin"></a></li>
-                    <li><a target="_blank" href="{{footer:instagram_link}}" class="icon-instagram"></a></li>
-                </ul>
+                <a target="_blank" href="{{ socials:facebook }}"></a>
+                <a target="_blank" href="{{ socials:twitter }}"></a>
+                <a target="_blank" href="{{ socials:linkedin }}"></a>
+                <a target="_blank" href="{{ socials:instagram }}"></a>
             </div>
     
-            <p>{{footer:surge_info}}</p>
+            <p>{{ footer:copyright }}</p>
         </div>
     </nav>
 </header>

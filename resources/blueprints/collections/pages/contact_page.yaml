@@ -36,18 +36,6 @@ sections:
           type: textarea
           icon: textarea
           listable: hidden
-      -
-        handle: map
-        field:
-          initial_type: roadmap
-          initial_zoom: '16'
-          maptypes: true
-          markers: true
-          geocoder: false
-          display: Map
-          type: google_map
-          icon: earth
-          listable: hidden
   sidebar:
     display: Sidebar
     fields:

@@ -7,10 +7,11 @@
 }
 @mixin font($font-weight: 400, $font-size: 16px, $color: #000) {
     font : {
-        family: none;
+        family: default;
         weight: $font-weight;
         size: $font-size;
     }
+    color: $color;
 }
 
 $portrait-tablet: "only screen and (max-width: 768px) and (min-width: 500px) and (max-height: 1024px)";
@@ -55,48 +56,39 @@ $desktopNavHeight: 115px;
             }
 
             li {
-                list-style-position: inside;
                 margin: 10px 0;
-
-                p {
-                    display: inline;
-                }
             }
         }
 
         /* ACCORDION */
 
-        .accordion-container {
-            width: 100%;
-            
-            .accordion {
-                position: relative;
-                margin-bottom: 15px;
-                background-color: #F2F2F2;
-                cursor: pointer;
+        .accordion {
+            position: relative;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #000;
+            cursor: pointer;
 
-                .title {
-                    @include flex(center);
-                    height: 50px;
-                    padding-left: 15px;
-                }
+            .title {
+                @include flex(center);
+                padding: 15px 0;
+            }
 
-                svg {
-                    position: absolute;
-                    width: 15px;
-                    height: 15px;
-                    transition-duration: .15s;
-                    right: 25px;
-                    top: 0;
-                }
+            svg {
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                transition-duration: .15s;
+                right: 25px;
+                top: 15px;
+            }
 
-                .panel {
-                    padding: 15px 20px;
-                }
+            .panel {
+                @include flex(0, 0, 0, column);
+                padding: 0px 20px 20px 20px;
+            }
 
-                .panel, .hide-panel {
-                    display: none;
-                }
+            .panel, .hide-panel {
+                display: none;
             }
         }
 
@@ -146,6 +138,14 @@ $desktopNavHeight: 115px;
         height: fit-content;
         text-decoration: none;
         color: #000;
+    }
+
+    li {
+        list-style-position: inside;
+
+        p {
+            display: inline;
+        }
     }
 
     picture {

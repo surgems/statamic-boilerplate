@@ -1,9 +1,17 @@
+title: Newsletter
 sections:
   main:
     display: Main
     fields:
       -
-        handle: company_info
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: content
         field:
           always_show_set_button: false
           buttons:
@@ -29,49 +37,39 @@ sections:
           enable_input_rules: true
           enable_paste_rules: true
           antlers: false
-          display: 'Company Info'
+          display: Content
           type: bard
           icon: bard
           listable: hidden
           instructions_position: above
       -
-        handle: copyright
+        handle: button_link
+        field:
+          display: 'Button Link'
+          type: link
+          icon: link
+          listable: hidden
+          instructions_position: above
+      -
+        handle: button_text
         field:
           input_type: text
           antlers: false
-          display: Copyright
+          display: 'Button Text'
           type: text
           icon: text
           listable: hidden
           instructions_position: above
+  sidebar:
+    display: Sidebar
+    fields:
       -
-        handle: links
+        handle: slug
         field:
-          collapse: false
-          sets:
-            link:
-              display: Link
-              fields:
-                -
-                  handle: link
-                  field:
-                    display: Link
-                    type: link
-                    icon: link
-                    listable: hidden
-                    instructions_position: above
-                -
-                  handle: text
-                  field:
-                    input_type: text
-                    antlers: false
-                    display: Text
-                    type: text
-                    icon: text
-                    listable: hidden
-                    instructions_position: above
-          display: Links
-          type: replicator
-          icon: replicator
-          listable: hidden
-          instructions_position: above
+          type: slug
+          localizable: true
+  seo:
+    display: SEO
+    fields:
+      -
+        import: seo
