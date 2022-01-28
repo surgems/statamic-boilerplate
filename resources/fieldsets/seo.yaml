@@ -37,6 +37,8 @@ fields:
       type: toggle
       icon: toggle
       listable: hidden
+      instructions_position: above
+      default: false
   -
     handle: schema
     field:
@@ -45,3 +47,13 @@ fields:
       type: textarea
       icon: textarea
       listable: hidden
+  -
+    handle: canonical_tag
+    field:
+      input_type: text
+      antlers: false
+      display: 'Canonical Tag'
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above

@@ -1,4 +1,4 @@
-title: 'Home Page'
+title: Contact
 sections:
   main:
     display: Main
@@ -17,18 +17,7 @@ sections:
         handle: slug
         field:
           type: slug
-          required: true
           localizable: true
-          validate:
-            - required
-      -
-        handle: template
-        field:
-          hide_partials: true
-          display: Template
-          type: template
-          icon: template
-          listable: hidden
       -
         handle: parent
         field:
@@ -38,6 +27,15 @@ sections:
           max_items: 1
           listable: false
           localizable: true
+      -
+        handle: template
+        field:
+          hide_partials: true
+          display: Template
+          type: template
+          icon: template
+          listable: hidden
+          instructions_position: above
   seo:
     display: SEO
     fields:

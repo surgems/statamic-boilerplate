@@ -1,9 +1,0 @@
-title: Newsletter
-template: thank-you
-layout: layout
-revisions: false
-route: '/newsletter/{slug}'
-sort_dir: asc
-date_behavior:
-  past: public
-  future: private

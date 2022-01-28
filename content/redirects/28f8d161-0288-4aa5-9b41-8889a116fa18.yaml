@@ -1,0 +1,6 @@
+id: 28f8d161-0288-4aa5-9b41-8889a116fa18
+enabled: true
+source: /contact/thank
+destination: /contact/thank-you
+type: '301'
+match_type: exact

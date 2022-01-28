@@ -80,6 +80,16 @@ $desktopNavHeight: 115px;
                 transition-duration: .15s;
                 right: 25px;
                 top: 15px;
+
+                &.active {
+                    transform: rotate(90deg);
+                }
+
+                &.half {
+                    &.active {
+                        transform: rotate(180deg);
+                    }
+                }
             }
 
             .panel {
