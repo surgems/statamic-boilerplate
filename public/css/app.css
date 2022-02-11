@@ -250,6 +250,12 @@
   right: 25px;
   top: 15px;
 }
+* body .accordion svg.active {
+  transform: rotate(90deg);
+}
+* body .accordion svg.half.active {
+  transform: rotate(180deg);
+}
 * body .accordion .panel {
   display: flex;
   align-items: 0;

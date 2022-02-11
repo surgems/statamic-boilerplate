@@ -14,19 +14,13 @@ var i;
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function () {
     this.classList.toggle("active");
+    this.children[1].classList.toggle('active');
     var panel = this.children[2];
 
     if (panel.style.display === "flex") {
       panel.style.display = "none";
-      this.children[1].style.transform = 'rotate(0)';
     } else {
       panel.style.display = "flex";
-
-      if (this.children[1].id === '180deg') {
-        this.children[1].style.transform = 'rotate(-180deg)';
-      } else {
-        this.children[1].style.transform = 'rotate(90deg)';
-      }
     }
   });
 }
@@ -147,6 +141,247 @@ window.addEventListener('scroll', scrollAnim);
 
 /***/ }),
 
+/***/ "./resources/js/filter.js":
+/*!********************************!*\
+  !*** ./resources/js/filter.js ***!
+  \********************************/
+/***/ (() => {
+
+/* POST FILTER */
+if (document.getElementById('has-posts')) {
+  (function () {
+    // filter functions
+    var filterSelection = function filterSelection(c) {
+      var x;
+      x = document.getElementsByClassName("post");
+      if (c == "all") c = ""; // Add the "show" class to the filtered elements, and remove the "show" class from the elements that are not selected
+
+      for (var i = 0; i < x.length; i++) {
+        RemoveClass(x[i], "show");
+
+        for (var j = 0; j < c.length; j++) {
+          if (x[i].className.indexOf(c[j]) > -1) AddClass(x[i], "show");
+        }
+      }
+
+      filteredEntries = document.getElementsByClassName('show');
+      removePosts();
+      addPosts();
+      paginate();
+    };
+
+    var RemoveClass = function RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+
+        ;
+      }
+
+      ;
+      element.className = arr1.join(" ");
+    };
+
+    var AddClass = function AddClass(element, name) {
+      var classlist = element.className.split(" ");
+      var names = name.split(" ");
+
+      for (var i = 0; i < names.length; i++) {
+        if (classlist.indexOf(names[i]) == -1) {
+          element.className += " " + names[i];
+        }
+      }
+    };
+
+    var paginate = function paginate() {
+      buildPage(currentPage);
+    };
+
+    var buildPage = function buildPage(currPage) {
+      if (nextPageBtn) {
+        prevPageBtn.classList.remove('hidden');
+        nextPageBtn.classList.remove('hidden');
+
+        if (currPage === 1) {
+          prevPageBtn.classList.add('hidden');
+
+          if (numOfPages === 1) {
+            nextPageBtn.classList.add('hidden');
+          }
+        } else if (currPage === numOfPages) {
+          nextPageBtn.classList.add('hidden');
+        }
+      }
+
+      if (document.getElementById('page-num')) {
+        document.getElementById('page-num').innerHTML = currPage;
+      }
+
+      var trimStart = (currPage - 1) * limit;
+      var trimEnd = trimStart + limit;
+      var postArr2 = [];
+
+      for (var _i = 0; _i < postArr.length; _i++) {
+        var classlist = [];
+
+        for (var j = 0; j < postArr[_i].classList.length; j++) {
+          classlist.push(postArr[_i].classList[j]);
+        }
+
+        ;
+
+        if (!classlist.includes('hidden')) {
+          postArr2.push(postArr[_i]);
+        }
+      }
+
+      postArr.forEach(function (el) {
+        el.classList.remove('current-page');
+      });
+      postArr2.slice(trimStart, trimEnd).forEach(function (el) {
+        el.classList.add('current-page');
+      });
+      numOfPages = Math.ceil(postArr2.length / limit);
+
+      if (document.getElementById('total-pages')) {
+        document.getElementById('total-pages').innerHTML = numOfPages;
+      }
+    };
+
+    var nextPage = function nextPage() {
+      if (currentPage < numOfPages) {
+        nextPageBtn.style.display = 'block';
+        currentPage++;
+        buildPage(currentPage);
+      }
+
+      ;
+    };
+
+    var prevPage = function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        buildPage(currentPage);
+      }
+    };
+
+    var postContainer = document.getElementsByClassName('posts-container')[0];
+    var allEntries = document.getElementsByClassName('post');
+    var filteredEntries;
+    ;
+
+    var removePosts = function removePosts() {
+      for (var i = allEntries.length - 1; i >= 0; i--) {
+        allEntries[i].classList.add('hidden');
+      }
+    };
+
+    var addPosts = function addPosts() {
+      for (var i = filteredEntries.length - 1; i >= 0; i--) {
+        filteredEntries[i].classList.remove('hidden');
+      }
+    }; // pagination functions
+
+
+    var posts = postContainer.children;
+    var nextPageBtn = document.getElementById('next');
+    var prevPageBtn = document.getElementById('prev');
+    var numOfPosts = posts.length;
+    var limit = parseInt($('.posts-container').attr('data-has-posts'));
+    var numOfPages = Math.ceil(numOfPosts / limit);
+    var currentPage = 1;
+    var postArr = [];
+
+    for (var i = 0; i < posts.length; i++) {
+      postArr.push(posts[i]);
+    }
+
+    ;
+    ;
+    ;
+    ;
+
+    if (nextPageBtn) {
+      nextPageBtn.addEventListener('click', nextPage);
+    }
+
+    if (prevPageBtn) {
+      prevPageBtn.addEventListener('click', prevPage);
+    } // filter on form submit
+
+
+    var filterForm = document.getElementById("filters");
+
+    if (filterForm) {
+      // filters posts and adds 'show' class
+      filterForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var filters = document.getElementsByClassName('filter');
+        var filterArr = [];
+
+        for (var _i2 = 0; _i2 < filterForm.length - 1; _i2++) {
+          filterArr.push(filters[_i2].value);
+          filterSelection([filters[_i2].value]);
+        }
+
+        ;
+      });
+    }
+
+    ; // filter on button click
+
+    var filterButtons = document.getElementsByClassName('filter-btn');
+
+    if (filterButtons) {
+      var _loop = function _loop(_i3) {
+        filterButtons[_i3].addEventListener('click', function () {
+          for (var _i4 = 0; _i4 < filterButtons.length; _i4++) {
+            filterButtons[_i4].classList.remove('active');
+          }
+
+          ;
+
+          filterButtons[_i3].classList.add('active');
+
+          filterSelection([filterButtons[_i3].id]);
+        });
+      };
+
+      for (var _i3 = 0; _i3 < filterButtons.length; _i3++) {
+        _loop(_i3);
+      }
+
+      ;
+    }
+
+    ;
+    paginate(); // load more posts
+
+    var loadMore = document.getElementById('load-more');
+
+    if (loadMore) {
+      var revealNo = parseInt($('#load-more').attr('data-reveal'));
+      loadMore.addEventListener('click', function () {
+        if (limit + revealNo <= numOfPosts) {
+          limit = limit + revealNo;
+          paginate();
+
+          if (limit + 1 > numOfPosts) {
+            loadMore.style.display = 'none';
+          }
+        }
+      });
+    }
+  })();
+}
+
+/***/ }),
+
 /***/ "./resources/js/globals.js":
 /*!*********************************!*\
   !*** ./resources/js/globals.js ***!
@@ -177,6 +412,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _animations__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_animations__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _accordion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./accordion */ "./resources/js/accordion.js");
 /* harmony import */ var _accordion__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_accordion__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./filter */ "./resources/js/filter.js");
+/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_filter__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
