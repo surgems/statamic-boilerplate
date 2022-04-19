@@ -2,6 +2,9 @@
 <html lang="{{ site:short_locale }}">
 
     <head>
+        <!-- MARKETING SCRIPTS -->
+        {{ scripts:head_scripts }}
+        
         <!-- SEO -->
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,7 +23,7 @@
         {{ if noindex_page }}<meta name="robots" content="noindex, nofollow" />{{ endif }}
 
         <link rel="canonical" href="{{ canonical_tag or current_url }}" />
-        <link rel="alternate" media="only screen and (max-width: 640px)"  href="{{ current_url }}" />
+        <link rel="alternate" media="only screen and (max-width: 640px)"  href="{{ canonical_tag or current_url }}" />
         {{ schema ?? schema }}
         {{ seo:schema_markup ?? seo:schema_markup }}
 
@@ -31,39 +34,23 @@
         <link rel="icon" href="{{ glide:logos:favicon }}">
         <link rel="apple-touch-icon" href="{{ glide:logos:favicon }}">
         <title>{{ meta_title or title }} | {{ site:name }}</title>
-
-        <!-- FONTS -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         
         <!-- STYLESHEETS & SCRIPTS -->
-        <link rel="stylesheet" href="{{ mix src='css/app.css' }}">
-        {{ scripts:header_scripts ?? scripts:header_scripts }}
+        {{ styles:inline_styles }}
     </head>
 
     <body class="{{ slug }}">
-        {{ scripts:body_scripts ?? scripts:body_scripts }}
+        <!-- MARKETING SCRIPTS -->
+        {{ scripts:body_scripts }}
 
+        <!-- CONTENT -->
         {{ partial:nav }}
-
-        {{ if enable_breadcrumbs }}
-            <ul class="breadcrumbs">
-                {{ nav:breadcrumbs }}
-                <li{{ if is_current }} class="current"{{ /if }}>
-                    <a href="{{ url }}">{{ title }}</a>
-                </li>
-                {{ /nav:breadcrumbs }}
-            </ul>
-        {{ /if }}
-
         {{ template_content }}
-
         {{ partial:footer }}
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" inline></script>
-        <script src="{{ mix src='/js/site.js' }}"></script>
-
-        {{ scripts:footer_scripts ?? scripts:footer_scripts }}
     </body>
 
+    <!-- MARKETING SCRIPTS -->
+    {{ scripts:footer_scripts }}
+
+    <script src="{{ mix src='/js/globals.js' }}" defer></script>
 </html>

@@ -1,3 +1,6 @@
+@use "sass:math";
+// @import "./fonts";
+
 @mixin flex($align-items: none, $justify-content: none, $flex-wrap: none, $flex-direction: none) {
     display: flex;
     align-items: $align-items;
@@ -14,9 +17,10 @@
     color: $color;
 }
 
-$portrait-tablet: "only screen and (max-width: 768px) and (min-width: 500px) and (max-height: 1024px)";
-$landscape-tablet: "only screen and (max-height: 768px) and (max-width: 1024px) and (min-width: 500px)"; // also landscape mobile
+$portrait-tablet: "only screen and (max-width: 769px) and (min-width: 500px)";
+$landscape-tablet: "only screen and (max-width: 1024px) and (min-width: 770px)";
 $laptop: "only screen and (min-width: 1024px) and (max-width: 1600px)";
+$large-laptop: "only screen and (min-width: 1250px) and (max-width: 1600px)";
 $desktop: "only screen and (min-width: 1600px)";
 $mobNavHeight: 75px;
 $tabletNavHeight: 95px;
@@ -93,12 +97,14 @@ $desktopNavHeight: 115px;
             }
 
             .panel {
-                @include flex(0, 0, 0, column);
-                padding: 0px 20px 20px 20px;
+                display: none;
             }
 
-            .panel, .hide-panel {
-                display: none;
+            &.active {
+                .panel {
+                    @include flex(0, 0, 0, column);
+                    padding: 0px 20px;
+                }
             }
         }
 
@@ -220,33 +226,10 @@ $desktopNavHeight: 115px;
     * {
         body {
             padding-top: $desktopNavHeight;
-
-            // main {}
-
-            // .content {
-            //     a {
-            //         font-size: 16px;
-            //     }
-
-            //     li {
-            //         margin: 50px 0;
-
-            //         p {
-            //             font-size: 20px;
-            //         }
-            //     }
-            // }
         }
     }
 }
 
-/* LANDSCAPE MOBILE */
-
-// @media #{$landscape-mobile} {
-//     * {
-//         body {
-//             main {
-//             }
-//         }
-//     }
-// }
+@import "./animations";
+@import "./nav";
+@import "./footer";

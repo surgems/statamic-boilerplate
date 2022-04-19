@@ -3,26 +3,53 @@ sections:
     display: Main
     fields:
       -
-        handle: header_scripts
+        handle: head_scripts
         field:
-          antlers: false
-          display: 'Header Scripts'
-          type: textarea
-          icon: textarea
+          theme: material
+          mode: htmlmixed
+          mode_selectable: false
+          indent_type: tabs
+          indent_size: 4
+          key_map: default
+          line_numbers: true
+          line_wrapping: true
+          display: 'Head Scripts'
+          type: code
+          icon: code
           listable: hidden
+          instructions_position: above
+          read_only: false
       -
         handle: body_scripts
         field:
-          antlers: false
+          theme: material
+          mode: htmlmixed
+          mode_selectable: false
+          indent_type: tabs
+          indent_size: 4
+          key_map: default
+          line_numbers: true
+          line_wrapping: true
           display: 'Body Scripts'
-          type: textarea
-          icon: textarea
+          type: code
+          icon: code
           listable: hidden
+          instructions_position: above
+          read_only: false
       -
         handle: footer_scripts
         field:
-          antlers: false
+          theme: material
+          mode: htmlmixed
+          mode_selectable: false
+          indent_type: tabs
+          indent_size: 4
+          key_map: default
+          line_numbers: true
+          line_wrapping: true
           display: 'Footer Scripts'
-          type: textarea
-          icon: textarea
+          type: code
+          icon: code
           listable: hidden
+          instructions_position: above
+          read_only: false

@@ -1,3 +1,4 @@
+import './_jquery';
 import 'owl.carousel';
 
 if ($(".owl-carousel")[0]) {

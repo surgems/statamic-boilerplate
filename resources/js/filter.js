@@ -1,3 +1,5 @@
+import './_jquery';
+
 /* POST FILTER */
 
 if (document.getElementById('has-posts')) {

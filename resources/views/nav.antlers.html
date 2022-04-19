@@ -1,28 +1,28 @@
-<header role="header">
+<header>
     <nav id="nav">
         <div class="inner-nav">
             <a href="/" class="logo">
                 <picture>
-                    <source srcset="{{ glide:logos:logo width='50px' format='webp' quality='100' }}" type="image/webp">
+                    <source media="(max-width: 559px)" srcset="{{ glide:logos:logo format='webp' quality='100' }}" width="{{ logos:logo:width }}" height="{{ logos:logo:height }}" type="image/webp">
                 
-                    <img class="logo" src="{{ glide:logos:logo width='100px' quality='100' }}" alt="{{logos:logo:alt}}">
+                    <img class="logo" src="{{ glide:logos:logo format='webp' quality='100' }}" width="{{ logos:logo:width }}" height="{{ logos:logo:height }}" alt="{{ logos:logo:alt }}">
                 </picture>
             </a>
     
             <div class="desktop-nav">
                 <div id="top-nav" class="top">
-                    <a>TEXT</a>
+                    <p>TEXT</p>
                 </div>
     
                 <div class="bottom">
                     {{ nav handle="main_navigation" }}
-                        <li id="{{title}}-link">
+                        <div id="{{title}}-link">
                             <a href="{{ url }}" class="{{ if is_parent }}has-children{{ /if }}">{{ title }}</a>
         
                             {{ if children }}
-                                <ul id="{{title}}-dropdown" class="dropdown {{title}}">{{ *recursive children* }}</ul>
+                                <div id="{{title}}-dropdown" class="dropdown {{title}}">{{ *recursive children* }}</div>
                             {{ /if }}
-                        </li>
+                        </div>
                     {{ /nav }}
                 </div>
             </div>
@@ -41,34 +41,32 @@
     
         <div id="mob-menu">
             {{ nav handle="main_navigation" }}
-                <div class="accordion-container">
-                    <li class="accordion" id="{{title}}-link">
-                        <a href="{{ url }}" class="{{ if is_parent }}has-children{{ /if }}">{{ title }}</a>
-        
-                        {{ if children }}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14.83" height="24" viewBox="0 0 14.83 24">
-                                <g id="ic_keyboard_arrow_right_48px" transform="translate(-17.17 -11.75)">
-                                <path id="Path_12063" data-name="Path 12063" d="M17.17,32.92l9.17-9.17-9.17-9.17L20,11.75l12,12-12,12Z" fill="#111"/>
-                                </g>
-                            </svg>
-                            
-                            <ul id="{{title}}-dropdown" class="panel dropdown {{title}}">{{ *recursive children* }}</ul>
-                        {{ /if }}
-                    </li>
+                <div class="accordion">
+                    <a {{ if url }}href="{{ url }}"{{ endif }}>{{ title }}</a>
+    
+                    {{ if children }}
+                        <div class="panel">
+                            {{ children }}
+                                <a href="{{ url }}">{{ title }}</a>
+                            {{ /children }}
+                        </div>
+                    {{ /if }}
                 </div>
             {{ /nav }}
     
-            <div class="contact">
-                <li class="accordion">
-                    <a href="/contact">contact</a>
-                </li>
-            </div>
-    
             <div class="socials">
-                <a target="_blank" href="{{ socials:facebook }}"></a>
-                <a target="_blank" href="{{ socials:twitter }}"></a>
-                <a target="_blank" href="{{ socials:linkedin }}"></a>
-                <a target="_blank" href="{{ socials:instagram }}"></a>
+                {{ if socials:facebook }}
+                    <a target="_blank" href="{{ socials:facebook }}"></a>
+                {{ endif }}
+                {{ if socials:twitter }}
+                    <a target="_blank" href="{{ socials:twitter }}"></a>
+                {{ endif }}
+                {{ if socials:linkedin }}
+                    <a target="_blank" href="{{ socials:linkedin }}"></a>
+                {{ endif }}
+                {{ if socials:instagram }}
+                    <a target="_blank" href="{{ socials:instagram }}"></a>
+                {{ endif }}
             </div>
     
             <p>{{ footer:copyright }}</p>
